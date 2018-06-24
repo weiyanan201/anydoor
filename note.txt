@@ -1,0 +1,18 @@
+安装supervisor 监控文件的变化，重启node服务器
+启动命令改为 supervisor app.js
+
+
+vscode 改变字体大小："editor.fontSize": 12
+
+handlebars html模板引擎
+
+压缩 gzip deflate
+
+
+curl :
+    -i 打印响应头和结果
+    -r 0-10 返回10个字节的结果
+
+http：
+    200
+    206：部分结果
