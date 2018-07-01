@@ -16,3 +16,25 @@ curl :
 http：
     200
     206：部分结果
+
+
+缓存header：
+    expires
+    Cache-Control(相对时间)
+    If-Modified-Since/Last-Modified
+    If-None-Match/ETag
+
+命令行工具包：
+    yargs
+    commander
+
+npm 将包信息保存在package.json 要添加参数 --save   --save-dev
+
+
+
+
+vscode使用技巧：
+    选取多个变量同时修改，按住alt再选取
+
+
+本地构建：gulp

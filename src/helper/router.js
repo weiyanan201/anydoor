@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const promisify = require('util').promisify;
 const HandleBars = require('handlebars');
-const config = require('../config/defaultConfig');
+const isFresh = require('../helper/cache');
 
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
@@ -14,13 +14,20 @@ const source = fs.readFileSync(tplPath, 'utf-8');
 const template = HandleBars.compile(source);
 
 //大法师阿斯顿发斯蒂芬
-module.exports = async function (req, res, filePath) {
+module.exports = async function (req, res, filePath, config) {
     try {
         const newLocal = await stat(filePath);
         const stats = newLocal;
         if (stats.isFile()) {
 
             res.setHeader('Content-Type', 'text/plain');
+
+            if (isFresh(stats, req, res)) {
+                res.statusCode = 304;
+                res.end();
+                return;
+            }
+
             let rs;
             const {
                 code,
